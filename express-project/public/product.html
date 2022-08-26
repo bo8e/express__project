@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>상품 페이지</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("p").click(function(){
+            $(this).hide();
+        });
+    });
+</script>
+</head>
+<body>
+    <h3>상품정보 페이지</h3>
+    <hr/>
+    <p> 로그인 후 볼 수 있는 상품정보 페이지입니다.</p>
+    <br><br>
+    <p id="p_result"></p>
+    <br><br>
+    <button id="p_btn">제품목록 불러오기</button>
+    <br><br>
+    <a href='/process/logout'>로그아웃하기</a>
+</body>
+
+<script>
+    $("#p_btn").click( function() {
+
+        $.get("/productlist", function(data, status) {
+            alert(data, status);
+            // $("#p_result)-> text추가")
+            $('#p_result').text( JSON.stringify(data))
+        });
+    });
+</script>
+
+</html>
